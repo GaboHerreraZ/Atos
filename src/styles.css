@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+table {
+    width: 100%;
+}
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+  
+td, th {
+    width: 20%;
+}
+
+
+.container {
+    margin:20px;
+    padding: 20px;
+}
+
+.container_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+.return {
+    text-decoration: underline;
+    cursor: pointer;
+}

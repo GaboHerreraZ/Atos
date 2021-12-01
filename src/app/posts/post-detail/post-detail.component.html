@@ -1,0 +1,32 @@
+<div class="container">
+    <a class="return" routerLink="/posts">Volver</a>
+    <h2>Comentarios del post</h2>
+    <mat-accordion class="headers-align">
+        <ng-container *ngIf="comments$ | async as comments">
+            <ng-container *ngFor="let comment of comments; let i = index">
+                <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        {{comment.name}}
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        {{comment.email}}
+                        <mat-icon>account_circle</mat-icon>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>
+                        {{comment.body}}
+                    </p>
+                    <mat-action-row>
+                      <button *ngIf="i > 0 && i <= comments.length" mat-button color="warn" (click)="prevStep()">Anterior</button>
+                      <button *ngIf="i < comments.length - 1" mat-button color="primary" (click)="nextStep()">Siguiente</button>
+                    </mat-action-row>
+                  </mat-expansion-panel>
+            </ng-container>
+        </ng-container>
+        
+    </mat-accordion>
+</div>
+
+
+  

@@ -1,0 +1,89 @@
+<div class="container">
+    <a class="return" routerLink="/posts">Volver</a>
+    <h2>Detalle del usuario</h2>
+    <ng-container *ngIf="user$ | async as user">
+        <mat-stepper orientation="vertical">
+            <mat-step>
+              <ng-template matStepLabel>Datos personales</ng-template>
+              <ng-template matStepContent>
+                
+                <div class="info_container">
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="Placeholder" [value] ="user.name" disabled>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Nombre usuario</mat-label>
+                        <input matInput placeholder="Placeholder" [value] ="user.username" disabled>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Placeholder" [value] ="user.email" disabled>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Sitio web</mat-label>
+                        <input matInput placeholder="Placeholder" [value] ="user.website" disabled>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Teléfono</mat-label>
+                        <input matInput placeholder="Placeholder" [value] ="user.phone" disabled>
+                    </mat-form-field>
+                </div>
+                <button mat-button matStepperNext>Continuar</button>
+              </ng-template>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Dirección</ng-template>
+              <ng-template matStepContent>
+                <div class="info_container">
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Ciudad</mat-label>
+                        <input matInput placeholder="Placeholder" [value]="user.address.city" disabled>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Calle</mat-label>
+                        <input matInput placeholder="Placeholder" [value]="user.address.street" disabled>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Piso</mat-label>
+                        <input matInput placeholder="Placeholder" [value]="user.address.suite" disabled>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Código postal</mat-label>
+                        <input matInput placeholder="Placeholder" [value]="user.address.zipcode" disabled>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Latitud</mat-label>
+                        <input matInput placeholder="Placeholder" [value]="user.address.geo.lat" disabled>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Longitud</mat-label>
+                        <input matInput placeholder="Placeholder" [value]="user.address.geo.lng" disabled>
+                    </mat-form-field>
+                </div>
+                <button mat-button matStepperPrevious>Volver</button>
+                <button mat-button matStepperNext>Continuar</button>
+              </ng-template>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Datos de empresa</ng-template>
+              <div class="info_container">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Placeholder" [value]="user.company.name" disabled>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>Descripcion</mat-label>
+                    <input matInput placeholder="Placeholder" [value]="user.company.catchPhrase" disabled>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>Tipo empresa</mat-label>
+                    <input matInput placeholder="Placeholder" [value]="user.company.bs" disabled>
+                </mat-form-field>
+              </div>
+              <button mat-button matStepperPrevious>Volver</button>
+            </mat-step>
+          </mat-stepper>
+    </ng-container>
+        
+</div>

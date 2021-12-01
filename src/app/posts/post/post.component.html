@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Crear post</h1>
+<div mat-dialog-content>
+    A continuación ingrese los datos del post:
+    <form [formGroup]="form">
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Titulo</mat-label>
+                <input matInput placeholder="Titulo" formControlName="title">
+                <mat-error>Titulo requerido</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+        <mat-form-field appearance="legacy">
+            <mat-label>Descripción del post</mat-label>
+            <input matInput placeholder="Descripción del post" formControlName="body">
+            <mat-error>Descripción requerida</mat-error>
+
+        </mat-form-field>
+        </p>
+       <p>
+        <mat-form-field appearance="legacy">
+            <mat-label>Usuario</mat-label>
+            <mat-select formControlName="userId">
+                <mat-option *ngFor="let user of (users$ | async)" [value]="user.id">
+                    {{user.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error>Usuario requerido</mat-error>
+        </mat-form-field>
+       </p>
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [disabled]="form.invalid" [mat-dialog-close]="form.value">Guardar</button>
+</div>
