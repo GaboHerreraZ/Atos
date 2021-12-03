@@ -5,15 +5,18 @@ import {
   HttpResponse } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
+import { LoadingService } from 'src/app/loading/loading.service';
 import { AlertService } from '../service/alert.service';
 
 export class HttpResponseInterceptor implements HttpInterceptor {
   
 
-    constructor( private alertService: AlertService) {}
+    constructor( private alertService: AlertService,
+                 private loadingService: LoadingService) {}
     
   
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
+      this.loadingService.startLoading();
       return next.handle(request)
         .pipe(
           map((event) => {
@@ -26,6 +29,7 @@ export class HttpResponseInterceptor implements HttpInterceptor {
                    this.alertService.error(event.body.message);
                 }
               }  
+              this.loadingService.stopLoading();
               return event;
         }));
     }

@@ -13,6 +13,8 @@ import { MaterialModule } from './shared/modules/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorsIntegratorModule } from './shared/interceptor/inteceptor-integrator.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './loading/loading.component';
+import { LoadingService } from './loading/loading.service';
 
 
 const HTTP_CUSTOM_INTERCEPTORS = [
@@ -25,7 +27,8 @@ const HTTP_CUSTOM_INTERCEPTORS = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

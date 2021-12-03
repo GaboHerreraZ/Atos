@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Response } from 'src/app/core/model/response';
 import { environment } from 'src/environments/environment';
+import { PostCommentModel } from './post.comment.model';
+import { PostModel } from './post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,32 +22,32 @@ export class PostService {
       return this.getPosts();
   }
 
-  public getPosts(): Observable<Response<any>> {
-    return this.http.get<Response<any>>(this.URL_POST).pipe(
-      map((result: Response<any>)=> result.data)
+  public getPosts(): Observable<PostModel[]> {
+    return this.http.get<Response<PostModel[]>>(this.URL_POST).pipe(
+      map((result: Response<PostModel[]>)=>   result.data)
     );
   }
 
-  public setPost(post: any) {
+  public setPost(post: any): Observable<PostModel> {
     const obj = { post };
-    return this.http.post<Response<any>>(this.URL_POST, obj).pipe(
-      map((result: Response<any>)=> result.data)
+    return this.http.post<Response<PostModel>>(this.URL_POST, obj).pipe(
+      map((result: Response<PostModel>)=> result.data)
     );
   }
 
-  public updatePost(post: any, id: number) {
+  public updatePost(post: any, id: number): Observable<PostModel> {
     const obj = { post };
     const url = `${this.URL_POST}/${id}`;
-    return this.http.put<Response<any>>(url, obj).pipe(
-      map((result: Response<any>)=> result.data)
+    return this.http.put<Response<PostModel>>(url, obj).pipe(
+      map((result: Response<PostModel>)=> result.data)
     );
   }
 
 
-  public getCommentsByPost(id: string) {
+  public getCommentsByPost(id: string): Observable<PostCommentModel[]> {
     const url = `${this.URL_POST}/${id}/comments`;
-    return this.http.get<Response<any>>(url).pipe(
-      map((result: Response<any>)=> result.data)
+    return this.http.get<Response<PostCommentModel[]>>(url).pipe(
+      map((result: Response<PostCommentModel[]>)=> result.data)
     );
   }
 

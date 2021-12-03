@@ -4,12 +4,13 @@ import { HttpClientModule, HttpErrorResponse, HTTP_INTERCEPTORS } from '@angular
 import { HttpResponseInterceptor } from './http-response-interceptor.service';
 import { AlertService } from '../service/alert.service';
 import { HttpErrorInterceptor } from './http-error-interceptor.service';
+import { LoadingService } from 'src/app/loading/loading.service';
 
 //Interceptors
 
 export const HTTP_CUSTOM_INTERCEPTORS = [
-  { provide: HTTP_INTERCEPTORS, useClass: HttpResponseInterceptor, multi: true , deps: [AlertService]},
-  { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true , deps: [AlertService]}
+  { provide: HTTP_INTERCEPTORS, useClass: HttpResponseInterceptor, multi: true , deps: [AlertService, LoadingService]},
+  { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true , deps: [AlertService, LoadingService]}
 ];
 
 
