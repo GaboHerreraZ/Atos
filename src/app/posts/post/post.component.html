@@ -21,9 +21,11 @@
         <mat-form-field appearance="legacy">
             <mat-label>Usuario</mat-label>
             <mat-select formControlName="userId">
-                <mat-option *ngFor="let user of (users$ | async)" [value]="user.id">
-                    {{user.name}}
-                </mat-option>
+                <ng-container *ngIf="(users$ | async) as users">
+                    <mat-option *ngFor="let user of users" [value]="user.id">
+                        {{user.name}}
+                    </mat-option>
+                </ng-container>
             </mat-select>
             <mat-error>Usuario requerido</mat-error>
         </mat-form-field>
@@ -32,5 +34,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button [disabled]="form.invalid" [mat-dialog-close]="form.value">Guardar</button>
+  <button mat-button  [disabled]="form.invalid" [mat-dialog-close]="form.value">Guardar</button>
 </div>

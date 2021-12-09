@@ -13,9 +13,6 @@ export class LoadingComponent implements OnInit {
   loading$ = new Observable<boolean>();
 
   constructor(private loadingService: LoadingService) { 
-
-    console.log('loading');
-
   }
 
   ngOnInit(): void {

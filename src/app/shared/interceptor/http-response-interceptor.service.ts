@@ -5,7 +5,7 @@ import {
   HttpResponse } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LoadingService } from 'src/app/loading/loading.service';
+import { LoadingService } from 'src/app/loading/loading/loading.service';
 import { AlertService } from '../service/alert.service';
 
 export class HttpResponseInterceptor implements HttpInterceptor {
@@ -29,7 +29,10 @@ export class HttpResponseInterceptor implements HttpInterceptor {
                    this.alertService.error(event.body.message);
                 }
               }  
-              this.loadingService.stopLoading();
+              //To simulate a delay from server
+              setTimeout(() => {
+                this.loadingService.stopLoading();
+              }, 200);
               return event;
         }));
     }

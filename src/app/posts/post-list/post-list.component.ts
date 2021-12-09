@@ -71,7 +71,8 @@ export class PostListComponent implements OnInit, AfterViewInit , OnDestroy{
 
   editPost(row: any) {
     const dialogRef =  this.dialog.open(PostComponent, {
-      data: row
+      data: row,
+      disableClose: true
     });
 
     this.subscription.add(dialogRef.afterClosed().pipe(
@@ -94,7 +95,9 @@ export class PostListComponent implements OnInit, AfterViewInit , OnDestroy{
 
   openModelCreatePost() {
 
-    const dialogRef =  this.dialog.open(PostComponent);
+    const dialogRef =  this.dialog.open(PostComponent, {
+      disableClose: true
+    });
 
     this.subscription.add(dialogRef.afterClosed().pipe(
       mergeMap(result => {

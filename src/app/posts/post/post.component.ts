@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/users/shared/user.service';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit , AfterViewInit{
 
   form: FormGroup;
   users$: Observable<any>;
@@ -22,8 +22,6 @@ export class PostComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getUsers();
-    
     this.form =  this.fb.group({
       id: [],
       title: ['', Validators.required],
@@ -32,6 +30,10 @@ export class PostComponent implements OnInit {
     });
 
     this.setUser();
+  }
+
+  ngAfterViewInit() {
+    this.getUsers();
   }
 
   getUsers() {
@@ -43,10 +45,5 @@ export class PostComponent implements OnInit {
       this.form.patchValue(this.data);
     }
   }
-  
-
-
-
-  
 
 }
